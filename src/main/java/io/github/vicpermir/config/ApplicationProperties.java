@@ -10,4 +10,23 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @ConfigurationProperties(prefix = "application", ignoreUnknownFields = false)
 public class ApplicationProperties {
+
+    private String baseDir;
+    private String uploadDir;
+
+    public String getBaseDir() {
+        return baseDir;
+    }
+
+    public String getUploadDir() {
+        return uploadDir;
+    }
+
+    public void setBaseDir(String baseDir) {
+        this.baseDir = baseDir;
+    }
+
+    public void setUploadDir(String uploadDir) {
+        this.uploadDir = uploadDir;
+    }
 }

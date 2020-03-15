@@ -126,4 +126,6 @@ jhipster:
 # https://www.jhipster.tech/common-application-properties/
 # ===================================================================
 
-# application:
+application:
+  baseDir: /opt/jhipster/ # Change this to suit your production environment
+  uploadDir: uploads
