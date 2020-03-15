@@ -1,0 +1,119 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-attachment-heading" jhiTranslate="jhAttachmentsApp.attachment.home.createOrEditLabel">Create or edit a Attachment</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhAttachmentsApp.attachment.filename" for="field_filename">Filename</label>
+                    <input type="text" class="form-control" name="filename" id="field_filename"
+                           formControlName="filename"/>
+                    <div *ngIf="editForm.get('filename')!.invalid && (editForm.get('filename')!.dirty || editForm.get('filename')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('filename')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhAttachmentsApp.attachment.originalFilename" for="field_originalFilename">Original Filename</label>
+                    <input type="text" class="form-control" name="originalFilename" id="field_originalFilename"
+                           formControlName="originalFilename"/>
+                    <div *ngIf="editForm.get('originalFilename')!.invalid && (editForm.get('originalFilename')!.dirty || editForm.get('originalFilename')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('originalFilename')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhAttachmentsApp.attachment.extension" for="field_extension">Extension</label>
+                    <input type="text" class="form-control" name="extension" id="field_extension"
+                           formControlName="extension"/>
+                    <div *ngIf="editForm.get('extension')!.invalid && (editForm.get('extension')!.dirty || editForm.get('extension')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('extension')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhAttachmentsApp.attachment.sizeInBytes" for="field_sizeInBytes">Size In Bytes</label>
+                    <input type="number" class="form-control" name="sizeInBytes" id="field_sizeInBytes"
+                           formControlName="sizeInBytes"/>
+                    <div *ngIf="editForm.get('sizeInBytes')!.invalid && (editForm.get('sizeInBytes')!.dirty || editForm.get('sizeInBytes')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('sizeInBytes')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('sizeInBytes')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhAttachmentsApp.attachment.sha256" for="field_sha256">Sha 256</label>
+                    <input type="text" class="form-control" name="sha256" id="field_sha256"
+                           formControlName="sha256"/>
+                    <div *ngIf="editForm.get('sha256')!.invalid && (editForm.get('sha256')!.dirty || editForm.get('sha256')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('sha256')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhAttachmentsApp.attachment.contentType" for="field_contentType">Content Type</label>
+                    <input type="text" class="form-control" name="contentType" id="field_contentType"
+                           formControlName="contentType"/>
+                    <div *ngIf="editForm.get('contentType')!.invalid && (editForm.get('contentType')!.dirty || editForm.get('contentType')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('contentType')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhAttachmentsApp.attachment.uploadDate" for="field_uploadDate">Upload Date</label>
+                    <div class="d-flex">
+                        <input id="field_uploadDate" type="datetime-local" class="form-control" name="uploadDate" formControlName="uploadDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('uploadDate')!.invalid && (editForm.get('uploadDate')!.dirty || editForm.get('uploadDate')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('uploadDate')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('uploadDate')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

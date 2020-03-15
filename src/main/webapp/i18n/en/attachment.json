@@ -1,0 +1,29 @@
+{
+  "jhAttachmentsApp": {
+    "attachment": {
+      "home": {
+        "title": "Attachments",
+        "createLabel": "Create a new Attachment",
+        "createOrEditLabel": "Create or edit a Attachment",
+        "notFound": "No Attachments found"
+      },
+      "created": "A new Attachment is created with identifier {{ param }}",
+      "updated": "A Attachment is updated with identifier {{ param }}",
+      "deleted": "A Attachment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Attachment {{ id }}?"
+      },
+      "detail": {
+        "title": "Attachment"
+      },
+      "filename": "Filename",
+      "originalFilename": "Original Filename",
+      "extension": "Extension",
+      "sizeInBytes": "Size In Bytes",
+      "sha256": "Sha 256",
+      "contentType": "Content Type",
+      "uploadDate": "Upload Date",
+      "reports": "Reports"
+    }
+  }
+}

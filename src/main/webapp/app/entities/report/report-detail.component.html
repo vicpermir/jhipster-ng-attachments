@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="report">
+            <h2><span jhiTranslate="jhAttachmentsApp.report.detail.title">Report</span> {{ report.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhAttachmentsApp.report.name">Name</span></dt>
+                <dd>
+                    <span>{{ report.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhAttachmentsApp.report.attachments">Attachments</span></dt>
+                <dd>
+                    <span *ngFor="let attachments of report.attachments; let last = last">
+                        <a [routerLink]="['/attachment', attachments?.id, 'view']">{{ attachments.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/report', report.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

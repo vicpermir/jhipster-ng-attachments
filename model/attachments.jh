@@ -1,0 +1,28 @@
+
+// Test entity, just to showcase attachments, this should
+// be the entity you want to add attachments to
+entity Report {
+	name String required
+}
+
+entity Attachment {
+	filename String required 			// Generated unique filename on the server
+	originalFilename String required 	// Original filename on the users computer
+	extension String required
+	sizeInBytes Integer required
+	sha256 String required				// Can be useful for duplication and integrity checks
+	contentType String required
+	uploadDate Instant required
+}
+
+// ManyToMany instead of OneToMany because it will be easier and cleaner
+// to integrate attachments into other entities in case we need to do it
+relationship ManyToMany {
+    Report{attachments} to Attachment{reports}
+}
+
+// Common config
+paginate all with pagination
+dto all with mapstruct
+service all with serviceClass
+filter all

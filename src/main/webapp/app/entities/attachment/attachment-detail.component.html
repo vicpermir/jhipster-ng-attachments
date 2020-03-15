@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="attachment">
+            <h2><span jhiTranslate="jhAttachmentsApp.attachment.detail.title">Attachment</span> {{ attachment.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhAttachmentsApp.attachment.filename">Filename</span></dt>
+                <dd>
+                    <span>{{ attachment.filename }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhAttachmentsApp.attachment.originalFilename">Original Filename</span></dt>
+                <dd>
+                    <span>{{ attachment.originalFilename }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhAttachmentsApp.attachment.extension">Extension</span></dt>
+                <dd>
+                    <span>{{ attachment.extension }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhAttachmentsApp.attachment.sizeInBytes">Size In Bytes</span></dt>
+                <dd>
+                    <span>{{ attachment.sizeInBytes }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhAttachmentsApp.attachment.sha256">Sha 256</span></dt>
+                <dd>
+                    <span>{{ attachment.sha256 }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhAttachmentsApp.attachment.contentType">Content Type</span></dt>
+                <dd>
+                    <span>{{ attachment.contentType }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhAttachmentsApp.attachment.uploadDate">Upload Date</span></dt>
+                <dd>
+                    <span>{{ attachment.uploadDate }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/attachment', attachment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
