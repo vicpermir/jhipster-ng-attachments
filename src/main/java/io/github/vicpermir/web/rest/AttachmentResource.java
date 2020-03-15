@@ -176,7 +176,7 @@ public class AttachmentResource {
                 ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
 
                 return ResponseEntity.ok()
-                        .header("Content-Disposition", String.format("inline; filename=\"" + a.getOriginalFilename() + "\""))
+                        .header("Content-Disposition", String.format("attachment; filename=\"" + a.getOriginalFilename() + "\""))
                         .contentLength(a.getSizeInBytes())
                         .contentType(MediaType.parseMediaType(a.getContentType()))
                         .body(resource);
