@@ -23,12 +23,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label jhiTranslate="jhAttachmentsApp.report.attachments" for="field_attachments">Attachments</label>
-                    <select class="form-control" id="field_attachments" multiple name="attachments" formControlName="attachments">
-                        <option [ngValue]="getSelected(editForm.get('attachments')!.value, attachmentOption)" *ngFor="let attachmentOption of attachments; trackBy: trackById">{{ attachmentOption.id }}</option>
-                    </select>
-                </div>
+                <jhi-attachment-upload [attachments]="editForm.get('attachments')!.value"></jhi-attachment-upload>
             </div>
 
             <div>

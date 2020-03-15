@@ -1,5 +1,4 @@
 import { Moment } from 'moment';
-import { IReport } from 'app/shared/model/report.model';
 
 export interface IAttachment {
   id?: number;
@@ -10,7 +9,8 @@ export interface IAttachment {
   sha256?: string;
   contentType?: string;
   uploadDate?: Moment;
-  reports?: IReport[];
+  file?: any;
+  processing?: boolean;
 }
 
 export class Attachment implements IAttachment {
@@ -23,6 +23,7 @@ export class Attachment implements IAttachment {
     public sha256?: string,
     public contentType?: string,
     public uploadDate?: Moment,
-    public reports?: IReport[]
+    public file?: any,
+    public processing?: boolean
   ) {}
 }

@@ -12,12 +12,8 @@
                 <dd>
                     <span>{{ report.name }}</span>
                 </dd>
-                <dt><span jhiTranslate="jhAttachmentsApp.report.attachments">Attachments</span></dt>
-                <dd>
-                    <span *ngFor="let attachments of report.attachments; let last = last">
-                        <a [routerLink]="['/attachment', attachments?.id, 'view']">{{ attachments.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
-                </dd>
+                
+                <jhi-attachment-download [attachments]="report.attachments"></jhi-attachment-download>
             </dl>
 
             <button type="submit"

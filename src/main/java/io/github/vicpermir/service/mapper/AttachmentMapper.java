@@ -15,6 +15,7 @@ public interface AttachmentMapper extends EntityMapper<AttachmentDTO, Attachment
 
     @Mapping(target = "reports", ignore = true)
     @Mapping(target = "removeReports", ignore = true)
+    @Mapping(target = "uploadDate", ignore = true)
     Attachment toEntity(AttachmentDTO attachmentDTO);
 
     default Attachment fromId(Long id) {

@@ -27,7 +27,7 @@ public class Report implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "report_attachments",
                joinColumns = @JoinColumn(name = "report_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "attachments_id", referencedColumnName = "id"))

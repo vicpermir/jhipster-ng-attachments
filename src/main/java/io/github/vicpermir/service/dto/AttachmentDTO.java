@@ -12,7 +12,6 @@ public class AttachmentDTO implements Serializable {
     
     private Long id;
 
-    @NotNull
     private String filename;
 
     @NotNull
@@ -30,9 +29,10 @@ public class AttachmentDTO implements Serializable {
     @NotNull
     private String contentType;
 
-    @NotNull
     private Instant uploadDate;
 
+    // File payload (transient)
+    private byte[] file;
     
     public Long getId() {
         return id;
@@ -98,6 +98,14 @@ public class AttachmentDTO implements Serializable {
         this.uploadDate = uploadDate;
     }
 
+    public byte[] getFile() {
+        return file;
+    }
+
+    public void setFile(byte[] file) {
+        this.file = file;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -130,6 +138,7 @@ public class AttachmentDTO implements Serializable {
             ", sha256='" + getSha256() + "'" +
             ", contentType='" + getContentType() + "'" +
             ", uploadDate='" + getUploadDate() + "'" +
+            ", file='" + getFile() + "'" +
             "}";
     }
 }

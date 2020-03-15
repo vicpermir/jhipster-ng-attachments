@@ -27,9 +27,12 @@ public class ReportService {
 
     private final ReportMapper reportMapper;
 
-    public ReportService(ReportRepository reportRepository, ReportMapper reportMapper) {
+    private final AttachmentService attachmentService;
+
+    public ReportService(ReportRepository reportRepository, ReportMapper reportMapper, AttachmentService attachmentService) {
         this.reportRepository = reportRepository;
         this.reportMapper = reportMapper;
+        this.attachmentService = attachmentService;
     }
 
     /**
@@ -40,6 +43,10 @@ public class ReportService {
      */
     public ReportDTO save(ReportDTO reportDTO) {
         log.debug("Request to save Report : {}", reportDTO);
+        
+        // Add attachments if any
+        reportDTO.setAttachments(attachmentService.processAttachments(reportDTO.getAttachments()));
+
         Report report = reportMapper.toEntity(reportDTO);
         report = reportRepository.save(report);
         return reportMapper.toDto(report);
