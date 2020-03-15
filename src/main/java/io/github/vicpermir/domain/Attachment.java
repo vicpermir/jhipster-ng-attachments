@@ -2,6 +2,8 @@ package io.github.vicpermir.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -49,9 +51,10 @@ public class Attachment implements Serializable {
     @Column(name = "content_type", nullable = false)
     private String contentType;
 
+    @CreatedDate
     @NotNull
-    @Column(name = "upload_date", nullable = false)
-    private Instant uploadDate;
+    @Column(name = "upload_date", nullable = false, updatable = false)
+    private Instant uploadDate = Instant.now();
 
     @ManyToMany(mappedBy = "attachments")
     @JsonIgnore
