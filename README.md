@@ -2,6 +2,33 @@
 
 This application was generated using JHipster 6.8.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.8.0](https://www.jhipster.tech/documentation-archive/v6.8.0).
 
+## About this repo
+
+This repository is intended to give a general implementation of file attachments within JHipster, business logic has been left out to simplify the changes required to integrate it into your own project. This includes, for example, how to manage entity deletion (what todo with the attachments) or how to secure attachment download.
+
+Some (most) of the implementation decisions were taken due to my own requirements, as file attachments have been a constant in most of my projects. For example, how I name the files on the server and how do I store them once uploaded. One of the requirement is that it should be easy to include attachments into new entities, that's why designed a single attachment entity with potentially several many-to-many relationships to other entities.
+
+The location for file storage is configured in [application-dev.yml](./src/main/resources/config/application-dev.yml) and [application-prod.yml](./src/main/resources/config/application-prod.yml) respectively. Under the directory configured here, the uploaded files will be stored inside /YEAR/MONTH subdirectories (based on upload date) to avoid cluttering a single dir with too many files.
+
+This project only has two entities: `Report` is only an example entity in which I integrated attachments, while `Attachment` is the core entity that contains all the functionalities. If you want to test how it works, the easiest way is to fire up the project, go to create or edit a `Report` and start playing around the the attachments.
+
+The most relevant files are the following:
+
+- [attachments.jh](./model/attachments.jh): JDL model used to generate this project
+- [AttachmentService.java](./src/main/java/io/github/vicpermir/service/AttachmentService.java): File management logic and helpers
+- [AttachmentDTO.java](./src/main/java/io/github/vicpermir/service/dto/AttachmentDTO.java): Attachment data to persist and file payload to store (base64)
+- [AttachmentResource.java](./src/main/java/io/github/vicpermir/web/rest/AttachmentResource.java): Attachment download mapping
+- [attachment-upload.component.ts](./src/main/webapp/app/shared/attachments/attachment-upload.component.ts): Component to manage attachment upload when editing or creating a new `Report`
+- [attachment-download.component.ts](./src/main/webapp/app/shared/attachments/attachment-download.component.ts): Component to manage attachment download when you view a `Report`
+
+## Preview
+
+I didn't spend much time in the visual design (again, I kept everything as simple as possible), but here they go:
+
+![Creating a new report and adding two attachments](./src/main/webapp/content/images/screen_1.jpg)
+
+![Viewing the created report to download attachments](./src/main/webapp/content/images/screen_2.jpg)
+
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
