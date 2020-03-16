@@ -165,9 +165,9 @@ public class AttachmentService {
         if (attachments != null && attachments.size() > 0) {
             for (AttachmentDTO a : attachments) {
                 if (a.getId() == null) {
-                    Optional<AttachmentDTO> attachmentPrevio = this.findBySha256(a.getSha256());
-                    if(attachmentPrevio.isPresent()) {
-                        a.setId(attachmentPrevio.get().getId());
+                    Optional<AttachmentDTO> existingAttachment = this.findBySha256(a.getSha256());
+                    if(existingAttachment.isPresent()) {
+                        a.setId(existingAttachment.get().getId());
                     } else {
                         String fileExtension = FilenameUtils.getExtension(a.getOriginalFilename());
                         String fileName = UUID.randomUUID() + "." + fileExtension;
