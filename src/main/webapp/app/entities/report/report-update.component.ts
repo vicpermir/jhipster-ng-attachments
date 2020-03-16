@@ -43,7 +43,7 @@ export class ReportUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: report.id,
       name: report.name,
-      attachments: report.attachments
+      attachments: report.attachments || []
     });
   }
 
